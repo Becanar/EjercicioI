@@ -24,6 +24,7 @@ public class Tabla extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Tabla.class.getResource("/org/example/ejercicioi/hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("/org/example/ejercicioi/style/style.css").toExternalForm());
         stage.setResizable(false);
         stage.setWidth(650);
         stage.setHeight(582);
