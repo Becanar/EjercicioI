@@ -1,0 +1,78 @@
+/* Estilo general de la ventana */
+.root {
+    -fx-background-color: #e0f7e0; /* Color de fondo verde claro */
+}
+
+/* Estilos para los botones */
+.button {
+    -fx-background-color: #28a745; /* Color de fondo verde */
+    -fx-text-fill: white; /* Color del texto blanco */
+    -fx-padding: 10px 15px; /* Padding interno del botón */
+    -fx-background-radius: 5px; /* Bordes redondeados */
+}
+
+.button:hover {
+    -fx-background-color: #218838; /* Color al pasar el mouse */
+}
+
+.button:pressed {
+    -fx-background-color: #1e7e34; /* Color cuando el botón está presionado */
+}
+
+/* Estilos para el TableView */
+.table-view {
+    -fx-background-color: #ffffff; /* Color de fondo de la tabla */
+    -fx-border-color: #ccc; /* Color del borde de la tabla */
+}
+
+/* Estilos para las columnas del TableView */
+.column-header-background {
+    -fx-background-color: #007bff; /* Fondo de los encabezados de columna */
+    -fx-text-fill: white; /* Texto blanco en encabezados */
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f8f9fa; /* Color de fondo para filas impares */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #0056b3; /* Fondo de fila seleccionada */
+    -fx-text-fill: white; /* Texto blanco en fila seleccionada */
+}
+
+/* Estilo para las etiquetas */
+.label {
+    -fx-text-fill: #333333; /* Color del texto de las etiquetas */
+    -fx-font-size: 12px; /* Tamaño de la fuente */
+}
+
+/* Estilo para el campo de texto */
+.text-field {
+    -fx-background-color: #ffffff; /* Color de fondo blanco */
+    -fx-border-color: #ccc; /* Color del borde del campo */
+    -fx-padding: 5px; /* Padding interno */
+    -fx-border-radius: 3px; /* Bordes redondeados */
+}
+
+/* Estilo para el tooltip */
+.tooltip {
+    -fx-background-color: #333; /* Color de fondo del tooltip */
+    -fx-text-fill: white; /* Color del texto en el tooltip */
+    -fx-border-radius: 3px; /* Bordes redondeados */
+    -fx-padding: 5px; /* Padding interno */
+}
+/* Estilo para el menú contextual */
+.context-menu {
+    -fx-background-color: #e0f7e0; /* Color de fondo verde claro */
+}
+
+.context-menu .menu-item {
+    -fx-background-color: transparent; /* Fondo transparente para los elementos del menú */
+    -fx-text-fill: #333333; /* Color del texto de los elementos del menú */
+    -fx-padding: 10px; /* Padding interno para los elementos del menú */
+}
+
+.context-menu .menu-item:hover {
+    -fx-background-color: #28a745; /* Color de fondo verde al pasar el mouse */
+    -fx-text-fill: white; /* Color del texto blanco al pasar el mouse */
+}
