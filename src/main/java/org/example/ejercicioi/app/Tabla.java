@@ -26,7 +26,7 @@ public class Tabla extends Application {
         stage.setWidth(650);
         stage.setHeight(500);
         try {
-            Image img = new Image(getClass().getResource("/com/example/ejercicioh/agenda.png").toString());
+            Image img = new Image(getClass().getResource("/org/example/ejercicioi/agenda.png").toString());
             stage.getIcons().add(img);
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen: " + e.getMessage());

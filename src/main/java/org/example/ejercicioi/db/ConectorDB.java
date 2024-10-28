@@ -1,5 +1,8 @@
 package org.example.ejercicioi.db;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -19,14 +22,10 @@ public class ConectorDB {
 	 *
 	 * @throws SQLException Si hay un error al establecer la conexión a la base de datos.
 	 */
-	public ConectorDB() throws SQLException {
-		Properties connConfig = new Properties();
-		connConfig.setProperty("user", "admin"); ///< Usuario de la base de datos.
-		connConfig.setProperty("password", "1234"); ///< Contraseña del usuario.
-
-		// Establece la conexión a la base de datos
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:33066/personas?serverTimezone=Europe/Madrid", connConfig);
-		connection.setAutoCommit(true); // Activa el auto-commit para la conexión.
+	public ConectorDB() throws SQLException, FileNotFoundException {
+		Properties props = loadProperties();
+		String url = props.getProperty("dburl");
+		connection = DriverManager.getConnection(url, props);
 
 		DatabaseMetaData databaseMetaData = connection.getMetaData();
         /*
@@ -61,8 +60,17 @@ public class ConectorDB {
 		return connection; // Retorna la conexión cerrada (aunque ya no será útil).
 	}
 
-    /*public static void main(String[] args) throws SQLException {
+    /*public static void main(String[] args) throws SQLException, FileNotFoundException {
         ConectorDB c = new ConectorDB();
         c.getConnection(); // Obtiene la conexión a la base de datos.
     }*/
+	public static Properties loadProperties() throws FileNotFoundException {
+		try (FileInputStream fs = new FileInputStream("db.properties")) {
+			Properties props = new Properties();
+			props.load(fs);
+			return props;
+		} catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

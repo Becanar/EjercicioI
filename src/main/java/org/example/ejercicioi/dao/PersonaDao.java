@@ -6,6 +6,7 @@ import org.example.ejercicioi.model.Persona;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,8 +43,10 @@ public class PersonaDao {
 			cn.closeConexion();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		}
-		return lst;
+		} catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return lst;
 	}
 
 	/**
@@ -71,7 +74,7 @@ public class PersonaDao {
 			ps.close();
 			cn.closeConexion();
 			return result > 0;
-		} catch (SQLException e) {
+		} catch (SQLException | FileNotFoundException e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
@@ -108,7 +111,7 @@ public class PersonaDao {
 			ps.close();
 			cn.closeConexion();
 			return -1;
-		} catch (SQLException e) {
+		} catch (SQLException | FileNotFoundException e) {
 			System.out.println(e.getMessage());
 			return -1;
 		}
@@ -132,7 +135,7 @@ public class PersonaDao {
 			ps.close();
 			cn.closeConexion();
 			return filasAfectadas > 0;
-		} catch (SQLException e) {
+		} catch (SQLException | FileNotFoundException e) {
 			System.out.println(e.getMessage());
 			return false;
 		}

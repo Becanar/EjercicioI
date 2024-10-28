@@ -15,9 +15,14 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.ejercicioi.dao.PersonaDao;
+import org.example.ejercicioi.db.ConectorDB;
 import org.example.ejercicioi.model.Persona;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 /**
  * Controlador para la tabla de personas en la interfaz gráfica.
@@ -42,6 +47,8 @@ public class tablaController {
 	private TableColumn<Persona, String> columnaNombre; ///< Columna para los nombres de las personas.
 	@FXML
 	private TableView<Persona> tablaVista; ///< Tabla que muestra la lista de personas.
+	@FXML
+	private Label lblBuscador;
 
 	private ObservableList<Persona> personas = FXCollections.observableArrayList(); ///< Lista observable de personas.
 	private FilteredList<Persona> filtro; ///< Lista filtrada para la búsqueda de personas.
@@ -57,7 +64,8 @@ public class tablaController {
 	 * Inicializa la tabla y configura las columnas.
 	 * Carga la lista de personas desde la base de datos.
 	 */
-	public void initialize() {
+	public void initialize() throws FileNotFoundException {
+
 		columnaNombre.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getNombre()));
 		columnaApellidos.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getApellidos()));
 		columnaEdad.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getEdad()));
