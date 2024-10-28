@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -32,6 +33,9 @@
                     <HBox.margin>
                         <Insets left="15.0" top="65.0" />
                     </HBox.margin>
+                    <tooltip>
+                        <Tooltip text="Filtrar para ver solo las personas cuyo nombre contiene la cadena escrita" />
+                    </tooltip>
                 </TextField>
             </children>
         </HBox>
@@ -50,20 +54,30 @@
         </TableView>
         <HBox fx:id="contenedorBotones" prefHeight="62.0" prefWidth="600.0">
             <children>
-                <Button fx:id="btAgregar" mnemonicParsing="false" onAction="#agregarPersona" text="Agregar Persona">
+                <Button fx:id="btAgregar"  mnemonicParsing="false" onAction="#agregarPersona" text="Agregar Persona">
                     <HBox.margin>
                         <Insets left="100.0" top="10.0" />
                     </HBox.margin>
+                    <tooltip>
+                        <Tooltip text="Añade una nueva persona" />
+                    </tooltip>
                 </Button>
-                <Button fx:id="btModificar" mnemonicParsing="false" onAction="#modificar" text="Modificar Persona">
+                <Button fx:id="btModificar"  mnemonicParsing="false" onAction="#modificar" text="Modificar Persona">
                     <HBox.margin>
                         <Insets left="30.0" top="10.0" />
                     </HBox.margin>
+                    <tooltip>
+                        <Tooltip text="Modifica el nombre, los apellidos y la edad de la persona seleccionada" />
+                    </tooltip>
                 </Button>
                 <Button fx:id="btEliminar" mnemonicParsing="false" onAction="#eliminar" text="Eliminar Persona">
                     <HBox.margin>
                         <Insets left="30.0" top="10.0" />
                     </HBox.margin>
+                    <tooltip>
+                        <Tooltip text="Elimina la persona seleccionada" />
+                    </tooltip>
+
                 </Button>
             </children>
         </HBox>

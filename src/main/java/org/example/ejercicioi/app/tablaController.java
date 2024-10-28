@@ -20,9 +20,7 @@ import org.example.ejercicioi.model.Persona;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.ResourceBundle;
+
 
 /**
  * Controlador para la tabla de personas en la interfaz gráfica.

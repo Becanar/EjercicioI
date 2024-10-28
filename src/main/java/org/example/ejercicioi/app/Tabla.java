@@ -6,7 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Clase principal que extiende de Application para ejecutar la aplicación de la tabla de personas.
