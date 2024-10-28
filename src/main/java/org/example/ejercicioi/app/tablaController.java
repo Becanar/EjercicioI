@@ -364,13 +364,21 @@ public class tablaController {
 		modal.close();
 	}
 
-
+	/**
+	 * Muestra el menú contextual al hacer clic con el botón derecho del ratón.
+	 *
+	 * @param mouseEvent El evento del mouse que desencadena la acción.
+	 */
 	public void mostrarMenuContextual(MouseEvent mouseEvent) {
 		if(mouseEvent.getButton()==MouseButton.SECONDARY) {
 			contextMenu.show(btAgregar.getScene().getWindow());
 		}
 	}
-
+	/**
+	 * Cambia el idioma de la interfaz según el botón presionado.
+	 *
+	 * @param event El evento de acción que desencadena el cambio de idioma.
+	 */
 	@FXML
 	void cambiarIdioma(ActionEvent event) {
 		String idiomaSeleccionado = ((Button) event.getSource()).getText().toLowerCase();
@@ -383,13 +391,19 @@ public class tablaController {
 			cambiarIdioma("en");
 		}
 	}
+	/**
+	 * Cambia el idioma de la interfaz a uno específico.
+	 *
+	 * @param idioma El código del idioma a cambiar (eu, es, en).
+	 */
 
 	private void cambiarIdioma(String idioma) {
 		resources = ResourceBundle.getBundle("/org/example/ejercicioi/languages/lang", new Locale(idioma));
 		actualizarInterfaz(); // Asegúrate de llamar a este método
 	}
-
-
+	/**
+	 * Actualiza la interfaz de usuario con los textos localizados según el idioma seleccionado.
+	 */
 	private void actualizarInterfaz() {
 		// Actualiza los títulos de las columnas
 		columnaNombre.setText(resources.getString("nombre"));

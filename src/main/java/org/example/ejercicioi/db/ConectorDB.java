@@ -64,6 +64,13 @@ public class ConectorDB {
         ConectorDB c = new ConectorDB();
         c.getConnection(); // Obtiene la conexión a la base de datos.
     }*/
+	/**
+	 * Carga las propiedades desde el archivo "db.properties".
+	 *
+	 * @return un objeto {@link Properties} con las propiedades del archivo.
+	 * @throws FileNotFoundException si el archivo "db.properties" no se encuentra.
+	 * @throws RuntimeException si ocurre un error al cargar las propiedades.
+	 */
 	public static Properties loadProperties() throws FileNotFoundException {
 		try (FileInputStream fs = new FileInputStream("db.properties")) {
 			Properties props = new Properties();

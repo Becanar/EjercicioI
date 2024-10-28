@@ -1,6 +1,5 @@
 package org.example.ejercicioi.dao;
 
-import org.example.ejercicioi.dao.PersonaDao;
 import org.example.ejercicioi.db.ConectorDB;
 import org.example.ejercicioi.model.Persona;
 import javafx.collections.FXCollections;
