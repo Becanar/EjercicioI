@@ -63,6 +63,8 @@ public class tablaController {
 	private Button btnGuardar; ///< Botón para guardar los cambios.
 	private Button btnCancelar; ///< Botón para cancelar la operación.
 	private Stage modal; ///< Ventana modal para ingresar datos de la persona.
+	MenuItem item1;
+	MenuItem item2;
 	@FXML
 	private ResourceBundle resources;
 	/**
@@ -84,8 +86,8 @@ public class tablaController {
 		btEliminar.setGraphic(iconoEliminar);
 		personas = PersonaDao.cargarPersonas();
 		contextMenu = new ContextMenu();
-		MenuItem item1 = new MenuItem(resources.getString("btModificar"));
-		MenuItem item2 = new MenuItem(resources.getString("btEliminar"));
+		item1 = new MenuItem(resources.getString("btModificar"));
+		item2 = new MenuItem(resources.getString("btEliminar"));
 		item1.setOnAction(event -> modificar(event));
 		item2.setOnAction(event -> eliminar(event));
 		contextMenu.getItems().addAll(item1,item2);
@@ -417,6 +419,9 @@ public class tablaController {
 
 		// Actualiza el texto de la etiqueta buscador
 		lblBuscador.setText(resources.getString("lblBuscador"));
+
+		item1.setText(resources.getString("btModificar"));
+		item2.setText(resources.getString("btEliminar"));
 	}
 
 }
