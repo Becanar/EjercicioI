@@ -11,11 +11,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.ejercicioi.dao.PersonaDao;
-import org.example.ejercicioi.db.ConectorDB;
 import org.example.ejercicioi.model.Persona;
 
 import java.io.FileNotFoundException;
@@ -47,6 +48,7 @@ public class tablaController {
 	private TableView<Persona> tablaVista; ///< Tabla que muestra la lista de personas.
 	@FXML
 	private Label lblBuscador;
+	private  ContextMenu contextMenu;
 
 	private ObservableList<Persona> personas = FXCollections.observableArrayList(); ///< Lista observable de personas.
 	private FilteredList<Persona> filtro; ///< Lista filtrada para la búsqueda de personas.
@@ -69,6 +71,12 @@ public class tablaController {
 		columnaEdad.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getEdad()));
 
 		personas = PersonaDao.cargarPersonas();
+		contextMenu = new ContextMenu();
+		MenuItem item1 = new MenuItem("Modificar");
+		MenuItem item2 = new MenuItem("Eliminar");
+		item1.setOnAction(event -> modificar(event));
+		item2.setOnAction(event -> eliminar(event));
+		contextMenu.getItems().addAll(item1,item2);
 		filtro = new FilteredList<>(personas);
 		tablaVista.setItems(filtro);
 
@@ -342,5 +350,12 @@ public class tablaController {
 	 */
 	private void cancelar() {
 		modal.close();
+	}
+
+
+	public void mostrarMenuContextual(MouseEvent mouseEvent) {
+		if(mouseEvent.getButton()==MouseButton.SECONDARY) {
+			contextMenu.show(btAgregar.getScene().getWindow());
+		}
 	}
 }

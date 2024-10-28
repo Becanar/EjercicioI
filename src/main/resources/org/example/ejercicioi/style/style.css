@@ -61,3 +61,18 @@
     -fx-border-radius: 3px; /* Bordes redondeados */
     -fx-padding: 5px; /* Padding interno */
 }
+/* Estilo para el menú contextual */
+.context-menu {
+    -fx-background-color: #e0f7e0; /* Color de fondo verde claro */
+}
+
+.context-menu .menu-item {
+    -fx-background-color: transparent; /* Fondo transparente para los elementos del menú */
+    -fx-text-fill: #333333; /* Color del texto de los elementos del menú */
+    -fx-padding: 10px; /* Padding interno para los elementos del menú */
+}
+
+.context-menu .menu-item:hover {
+    -fx-background-color: #28a745; /* Color de fondo verde al pasar el mouse */
+    -fx-text-fill: white; /* Color del texto blanco al pasar el mouse */
+}

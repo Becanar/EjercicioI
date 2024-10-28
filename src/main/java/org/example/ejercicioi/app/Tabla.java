@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 /**
  * Clase principal que extiende de Application para ejecutar la aplicación de la tabla de personas.
@@ -22,7 +19,11 @@ public class Tabla extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Tabla.class.getResource("/org/example/ejercicioi/hello-view.fxml"));
+        /*Properties connConfig = ConectorDB.loadProperties() ;
+        String lang = connConfig.getProperty("language");
+        Locale locale = new Locale.Builder().setLanguage(lang).build();
+        ResourceBundle bundle = ResourceBundle.getBundle("/org/example/ejercicioi/languages/lang", locale);
+        */FXMLLoader fxmlLoader = new FXMLLoader(Tabla.class.getResource("/org/example/ejercicioi/hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(getClass().getResource("/org/example/ejercicioi/style/style.css").toExternalForm());
         stage.setResizable(false);

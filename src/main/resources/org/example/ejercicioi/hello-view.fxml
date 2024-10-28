@@ -39,7 +39,7 @@
                 </TextField>
             </children>
         </HBox>
-        <TableView fx:id="tablaVista" prefHeight="344.0" prefWidth="439.0">
+        <TableView fx:id="tablaVista" onMouseClicked="#mostrarMenuContextual" prefHeight="344.0" prefWidth="439.0">
             <columns>
                 <TableColumn fx:id="columnaNombre" prefWidth="336.00000607967377" text="NOMBRE" />
                 <TableColumn fx:id="columnaApellidos" prefWidth="127.20001220703125" text="APELLIDOS" />
