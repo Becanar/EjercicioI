@@ -24,7 +24,6 @@ public class Tabla extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         String idioma = Propiedades.getValor("language");
-        System.out.println(idioma);
         ResourceBundle bundle = ResourceBundle.getBundle("/org/example/ejercicioi/languages/lang", new Locale(idioma));
         FXMLLoader fxmlLoader = new FXMLLoader(Tabla.class.getResource("/org/example/ejercicioi/hello-view.fxml"),bundle);
         Scene scene = new Scene(fxmlLoader.load());

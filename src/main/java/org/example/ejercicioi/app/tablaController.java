@@ -21,6 +21,7 @@ import org.example.ejercicioi.model.Persona;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 
@@ -67,7 +68,7 @@ public class tablaController {
 	 * Carga la lista de personas desde la base de datos.
 	 */
 	public void initialize() throws FileNotFoundException {
-
+		cambiarIdioma("es");
 		columnaNombre.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getNombre()));
 		columnaApellidos.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getApellidos()));
 		columnaEdad.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getEdad()));
@@ -360,4 +361,39 @@ public class tablaController {
 			contextMenu.show(btAgregar.getScene().getWindow());
 		}
 	}
+
+	@FXML
+	void cambiarIdioma(ActionEvent event) {
+		String idiomaSeleccionado = ((Button) event.getSource()).getText().toLowerCase();
+
+		if (idiomaSeleccionado.equals("eu")) {
+			cambiarIdioma("eu");
+		} else if (idiomaSeleccionado.equals("es")) {
+			cambiarIdioma("es");
+		}else{
+			cambiarIdioma("en");
+		}
+	}
+
+	private void cambiarIdioma(String idioma) {
+		resources = ResourceBundle.getBundle("/org/example/ejercicioi/languages/lang", new Locale(idioma));
+		actualizarInterfaz(); // Asegúrate de llamar a este método
+	}
+
+
+	private void actualizarInterfaz() {
+		// Actualiza los títulos de las columnas
+		columnaNombre.setText(resources.getString("nombre"));
+		columnaApellidos.setText(resources.getString("apellidos"));
+		columnaEdad.setText(resources.getString("edad"));
+
+		// Actualiza los textos de los botones
+		btAgregar.setText(resources.getString("btAgregar"));
+		btModificar.setText(resources.getString("btModificar"));
+		btEliminar.setText(resources.getString("btEliminar"));
+
+		// Actualiza el texto de la etiqueta buscador
+		lblBuscador.setText(resources.getString("lblBuscador"));
+	}
+
 }
