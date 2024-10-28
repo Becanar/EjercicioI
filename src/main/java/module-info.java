@@ -2,6 +2,8 @@ module org.example.ejercicioi {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires org.kordamp.ikonli.javafx;
+    requires org.kordamp.ikonli.fontawesome5;
 
 
     opens org.example.ejercicioi to javafx.fxml;

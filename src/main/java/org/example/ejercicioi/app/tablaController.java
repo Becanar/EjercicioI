@@ -23,6 +23,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import org.kordamp.ikonli.javafx.FontIcon;
+import org.kordamp.ikonli.fontawesome5.FontAwesomeRegular;
 
 
 /**
@@ -68,11 +70,18 @@ public class tablaController {
 	 * Carga la lista de personas desde la base de datos.
 	 */
 	public void initialize() throws FileNotFoundException {
-		cambiarIdioma("es");
 		columnaNombre.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getNombre()));
 		columnaApellidos.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getApellidos()));
 		columnaEdad.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getEdad()));
-
+		FontIcon iconoAniadir = new FontIcon(FontAwesomeRegular.PLUS_SQUARE);
+		iconoAniadir.setIconColor(javafx.scene.paint.Color.WHITE);
+		btAgregar.setGraphic(iconoAniadir);
+		FontIcon iconoModificar=new FontIcon(FontAwesomeRegular.CARET_SQUARE_UP);
+		iconoModificar.setIconColor(javafx.scene.paint.Color.WHITE);
+		btModificar.setGraphic(iconoModificar);
+		FontIcon iconoEliminar=new FontIcon(FontAwesomeRegular.MINUS_SQUARE);
+		iconoEliminar.setIconColor(javafx.scene.paint.Color.WHITE);
+		btEliminar.setGraphic(iconoEliminar);
 		personas = PersonaDao.cargarPersonas();
 		contextMenu = new ContextMenu();
 		MenuItem item1 = new MenuItem(resources.getString("btModificar"));
