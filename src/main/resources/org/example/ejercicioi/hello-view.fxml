@@ -6,21 +6,31 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ejercicioi.app.tablaController">
+<VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ejercicioi.app.tablaController">
     <children>
         <HBox fx:id="contenedorBuscadorBotones" prefHeight="100.0" prefWidth="200.0">
             <children>
+            <ImageView fx:id="imgPersonas" fitHeight="128.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@contactos.jpeg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" top="20.0" />
+               </HBox.margin>
+            </ImageView>
                 <Label fx:id="lblBuscador" text="Filtrar por nombre:">
                     <HBox.margin>
-                        <Insets left="10.0" top="15.0" />
+                        <Insets left="30.0" top="70.0" />
                     </HBox.margin>
                 </Label>
                 <TextField fx:id="txtBuscar" onAction="#filtrar">
                     <HBox.margin>
-                        <Insets left="5.0" top="10.0" />
+                        <Insets left="15.0" top="65.0" />
                     </HBox.margin>
                 </TextField>
             </children>
@@ -38,7 +48,7 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <HBox fx:id="contenedorBotones" prefHeight="110.0" prefWidth="600.0">
+        <HBox fx:id="contenedorBotones" prefHeight="62.0" prefWidth="600.0">
             <children>
                 <Button fx:id="btAgregar" mnemonicParsing="false" onAction="#agregarPersona" text="Agregar Persona">
                     <HBox.margin>

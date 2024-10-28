@@ -24,7 +24,7 @@ public class Tabla extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
         stage.setWidth(650);
-        stage.setHeight(500);
+        stage.setHeight(582);
         try {
             Image img = new Image(getClass().getResource("/org/example/ejercicioi/agenda.png").toString());
             stage.getIcons().add(img);
