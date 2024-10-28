@@ -21,6 +21,7 @@ import org.example.ejercicioi.model.Persona;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
 /**
@@ -59,7 +60,8 @@ public class tablaController {
 	private Button btnGuardar; ///< Botón para guardar los cambios.
 	private Button btnCancelar; ///< Botón para cancelar la operación.
 	private Stage modal; ///< Ventana modal para ingresar datos de la persona.
-
+	@FXML
+	private ResourceBundle resources;
 	/**
 	 * Inicializa la tabla y configura las columnas.
 	 * Carga la lista de personas desde la base de datos.
@@ -72,8 +74,8 @@ public class tablaController {
 
 		personas = PersonaDao.cargarPersonas();
 		contextMenu = new ContextMenu();
-		MenuItem item1 = new MenuItem("Modificar");
-		MenuItem item2 = new MenuItem("Eliminar");
+		MenuItem item1 = new MenuItem(resources.getString("btModificar"));
+		MenuItem item2 = new MenuItem(resources.getString("btEliminar"));
 		item1.setOnAction(event -> modificar(event));
 		item2.setOnAction(event -> eliminar(event));
 		contextMenu.getItems().addAll(item1,item2);
@@ -117,23 +119,23 @@ public class tablaController {
 		gridPane.setHgap(10);
 		gridPane.setVgap(10);
 
-		Label lblNombre = new Label("Nombre");
+		Label lblNombre = new Label(resources.getString("nombre"));
 		txtNombre = new TextField(esModif ? tablaVista.getSelectionModel().getSelectedItem().getNombre() : "");
 		gridPane.add(lblNombre, 0, 0);
 		gridPane.add(txtNombre, 1, 0);
 
-		Label lblApellidos = new Label("Apellidos");
+		Label lblApellidos = new Label(resources.getString("apellidos"));
 		txtApellidos = new TextField(esModif ? tablaVista.getSelectionModel().getSelectedItem().getApellidos() : "");
 		gridPane.add(lblApellidos, 0, 1);
 		gridPane.add(txtApellidos, 1, 1);
 
-		Label lblEdad = new Label("Edad");
+		Label lblEdad = new Label(resources.getString("edad"));
 		txtEdad = new TextField(esModif ? String.valueOf(tablaVista.getSelectionModel().getSelectedItem().getEdad()) : "");
 		gridPane.add(lblEdad, 0, 2);
 		gridPane.add(txtEdad, 1, 2);
 
-		btnGuardar = new Button("Guardar");
-		btnCancelar = new Button("Cancelar");
+		btnGuardar = new Button(resources.getString("btGuardar"));
+		btnCancelar = new Button(resources.getString("btCancelar"));
 		FlowPane flowPane = new FlowPane(btnGuardar, btnCancelar);
 		flowPane.setAlignment(Pos.CENTER);
 		flowPane.setHgap(20);
@@ -142,7 +144,7 @@ public class tablaController {
 		Scene scene = new Scene(gridPane, 300, 150);
 		modal.setScene(scene);
 		modal.setResizable(false);
-		modal.setTitle(esModif ? "Editar Persona" : "Nueva Persona");
+		modal.setTitle(esModif ? resources.getString("ep") : resources.getString("nvp"));
 		modal.show();
 	}
 
@@ -172,7 +174,7 @@ public class tablaController {
 
 			if (existe) {
 				ArrayList<String> errores = new ArrayList<>();
-				errores.add("La persona ya existe.");
+				errores.add(resources.getString("existe"));
 				mostrarAlertError(errores);
 				return;
 			}
@@ -211,17 +213,17 @@ public class tablaController {
 		boolean error = false;
 		ArrayList<String> errores = new ArrayList<>();
 		if (txtNombre.getText().equals("")) {
-			errores.add("El campo Nombre es obligatorio.");
+			errores.add(resources.getString("campoN"));
 			error = true;
 		}
 		if (txtApellidos.getText().equals("")) {
-			errores.add("El campo Apellidos es obligatorio.");
+			errores.add(resources.getString("campoA"));
 			error = true;
 		}
 		try {
 			Integer.parseInt(txtEdad.getText());
 		} catch (NumberFormatException e) {
-			errores.add("El campo Edad debe ser numérico.");
+			errores.add(resources.getString("campoE"));
 			error = true;
 		}
 		if (error) {
@@ -241,7 +243,7 @@ public class tablaController {
 		Persona p = tablaVista.getSelectionModel().getSelectedItem();
 		if (p == null) {
 			ArrayList<String> lst = new ArrayList<>();
-			lst.add("No has seleccionado ninguna persona.");
+			lst.add((resources.getString("noSelect")));
 			mostrarAlertError(lst);
 		} else {
 			if (PersonaDao.eliminarPersona(p)) {
@@ -264,7 +266,7 @@ public class tablaController {
 		Persona p = tablaVista.getSelectionModel().getSelectedItem();
 		if (p == null) {
 			ArrayList<String> lst = new ArrayList<>();
-			lst.add("No has seleccionado ninguna persona.");
+			lst.add((resources.getString("noSelect")));
 			mostrarAlertError(lst);
 		} else {
 			mostrarVentanaDatos((Stage) btModificar.getScene().getWindow(), true);
@@ -317,7 +319,7 @@ public class tablaController {
 		alerta.initOwner(btAgregar.getScene().getWindow());
 		alerta.setHeaderText(null);
 		alerta.setTitle("Info");
-		alerta.setContentText("Persona agregada correctamente.");
+		alerta.setContentText((resources.getString("ok")));
 		alerta.showAndWait();
 	}
 
@@ -329,7 +331,7 @@ public class tablaController {
 		alerta.initOwner(btAgregar.getScene().getWindow());
 		alerta.setHeaderText(null);
 		alerta.setTitle("Info");
-		alerta.setContentText("Persona modificada correctamente.");
+		alerta.setContentText((resources.getString("okM")));
 		alerta.showAndWait();
 	}
 
@@ -341,7 +343,7 @@ public class tablaController {
 		alerta.initOwner(btAgregar.getScene().getWindow());
 		alerta.setHeaderText(null);
 		alerta.setTitle("Info");
-		alerta.setContentText("Persona eliminada correctamente.");
+		alerta.setContentText((resources.getString("okD")));
 		alerta.showAndWait();
 	}
 

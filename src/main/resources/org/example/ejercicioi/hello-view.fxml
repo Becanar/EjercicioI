@@ -24,7 +24,7 @@
                   <Insets left="10.0" top="20.0" />
                </HBox.margin>
             </ImageView>
-                <Label fx:id="lblBuscador" text="Filtrar por nombre:">
+                <Label fx:id="lblBuscador" text="%lblBuscador">
                     <HBox.margin>
                         <Insets left="30.0" top="70.0" />
                     </HBox.margin>
@@ -34,16 +34,16 @@
                         <Insets left="15.0" top="65.0" />
                     </HBox.margin>
                     <tooltip>
-                        <Tooltip text="Filtrar para ver solo las personas cuyo nombre contiene la cadena escrita" />
+                        <Tooltip text="%tipFiltro" />
                     </tooltip>
                 </TextField>
             </children>
         </HBox>
         <TableView fx:id="tablaVista" onMouseClicked="#mostrarMenuContextual" prefHeight="344.0" prefWidth="439.0">
             <columns>
-                <TableColumn fx:id="columnaNombre" prefWidth="336.00000607967377" text="NOMBRE" />
-                <TableColumn fx:id="columnaApellidos" prefWidth="127.20001220703125" text="APELLIDOS" />
-                <TableColumn fx:id="columnaEdad" minWidth="0.0" prefWidth="86.0" text="EDAD" />
+                <TableColumn fx:id="columnaNombre" prefWidth="336.00000607967377" text="%nombreM" />
+                <TableColumn fx:id="columnaApellidos" prefWidth="127.20001220703125" text="%apellidosM" />
+                <TableColumn fx:id="columnaEdad" minWidth="0.0" prefWidth="86.0" text="%edadM" />
             </columns>
             <VBox.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -54,28 +54,28 @@
         </TableView>
         <HBox fx:id="contenedorBotones" prefHeight="62.0" prefWidth="600.0">
             <children>
-                <Button fx:id="btAgregar"  mnemonicParsing="false" onAction="#agregarPersona" text="Agregar Persona">
+                <Button fx:id="btAgregar"  mnemonicParsing="false" onAction="#agregarPersona" text="%btAgregar">
                     <HBox.margin>
                         <Insets left="100.0" top="10.0" />
                     </HBox.margin>
                     <tooltip>
-                        <Tooltip text="Añade una nueva persona" />
+                        <Tooltip text="%tipAniadir" />
                     </tooltip>
                 </Button>
-                <Button fx:id="btModificar"  mnemonicParsing="false" onAction="#modificar" text="Modificar Persona">
+                <Button fx:id="btModificar"  mnemonicParsing="false" onAction="#modificar" text="%btModificar">
                     <HBox.margin>
                         <Insets left="30.0" top="10.0" />
                     </HBox.margin>
                     <tooltip>
-                        <Tooltip text="Modifica el nombre, los apellidos y la edad de la persona seleccionada" />
+                        <Tooltip text="%tipModificar" />
                     </tooltip>
                 </Button>
-                <Button fx:id="btEliminar" mnemonicParsing="false" onAction="#eliminar" text="Eliminar Persona">
+                <Button fx:id="btEliminar" mnemonicParsing="false" onAction="#eliminar" text="%btEliminar">
                     <HBox.margin>
                         <Insets left="30.0" top="10.0" />
                     </HBox.margin>
                     <tooltip>
-                        <Tooltip text="Elimina la persona seleccionada" />
+                        <Tooltip text="%tipEliminar" />
                     </tooltip>
 
                 </Button>
